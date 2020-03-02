@@ -99,7 +99,7 @@ argument and uses your Stack module to return a new stack with the
 following strings pushed in order: `"Computer"`, `"Science"`, `"51"`.
 ......................................................................*)
 
-llet sample_stack () =
+let sample_stack () =
   let open Stack in
   empty
   |> push "Computer"

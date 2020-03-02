@@ -9,6 +9,22 @@ and arguably unnecessarily so. By the way, it also has some bugs so it
 doesn't pass all the unit tests. No need to debug it though. You'll be
 replacing it wholesale with a simpler implementation. *)
 
+(*
+                               SOLUTION
+
+In this implementation, we simply use int triples for the rgb
+channels. By keeping the data in a more structured form, all of the
+conversions are simplified.
+
+You might have used a record type instead of a tuple, for instance,
+
+    type color = { red : int; green : int; blue : int } ;;
+
+That could work too. And the user of the module (lab7_part2.ml)
+wouldn't be able to tell the difference, just like it can't tell the
+difference with the horribly obfuscated implementation in the
+original version of color.ml. *)
+
 (* 8-bit RGB channel colors *)
 type color = int * int * int ;;
 

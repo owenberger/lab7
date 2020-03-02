@@ -3,6 +3,10 @@
                    Modules and Abstract Data Types
  *)
 
+(*
+                               SOLUTION
+ *)
+
 (* Objective: This lab practices concepts of modules, including files
 as modules, signatures, and polymorphic abstract data types.
 
@@ -102,11 +106,7 @@ Exercise 3C: Now, use `IntListStack` functions to write an expression that
 defines `last_el` as the value of the topmost element from `small_stack`.
 ......................................................................*)
 
-let small_stack () : IntListStack.stack =
-  let open IntListStack in
-  empty
-  |> push 5
-  |> push 1 ;;
+let last_el = IntListStack.top (small_stack ()) ;;
 
 (* Based on our requirements above, what should the value `last_el` be?
 
@@ -138,7 +138,7 @@ top value from `small_stack` inverted with `invert_stack` and name the
 result `bad_el`.
 ......................................................................*)
 
-let bad_el = 0 ;;
+let bad_el = IntListStack.top (invert_stack (small_stack ())) ;;
 
 (* This is bad. We have broken through the *abstraction barrier*
 defined by the `IntListStack` module. You may wonder: "if I know that
@@ -207,3 +207,12 @@ let safe_stack () : SafeIntListStack.stack =
   empty
   |> push 5
   |> push 1 ;;
+
+(* The type of safe_stack is
+
+       unit -> SafeIntListStack.stack
+
+   Notice that the return type is the *abstract* type
+   `SafeIntListStack.stack`, not `int list` or some other type whose
+   values can be manipulated by functions others than those allowed by
+   the `INT_STACK` interface. *)
